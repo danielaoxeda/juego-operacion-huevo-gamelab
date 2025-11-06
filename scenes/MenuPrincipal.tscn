@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://t7afgx8jw0yu"]
+[gd_scene load_steps=6 format=3 uid="uid://t7afgx8jw0yu"]
 
+[ext_resource type="Script" uid="uid://bxsurx3r01s82" path="res://scripts/ui/menu.gd" id="1_f5jwn"]
 [ext_resource type="Texture2D" uid="uid://tifgv3ow0wuw" path="res://resources/ui/btn_play.png" id="1_ffwdg"]
 [ext_resource type="Texture2D" uid="uid://c8d2jsc4dya0l" path="res://resources/ui/background.png" id="1_q4epk"]
 [ext_resource type="Texture2D" uid="uid://bpstpgdltln02" path="res://resources/ui/btn_credits.png" id="3_cjknc"]
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_f5jwn")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -21,6 +23,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_q4epk")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -248.5
+offset_top = -110.0
+offset_right = 248.5
+offset_bottom = 387.0
+grow_horizontal = 2
+texture = ExtResource("4_cjknc")
 expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -40,6 +55,7 @@ theme_override_constants/separation = 2
 
 [node name="Play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+action_mode = 0
 flat = true
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Play"]
@@ -59,7 +75,7 @@ stretch_mode = 6
 
 [node name="Credits" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-button_mask = 0
+action_mode = 0
 flat = true
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Credits"]
@@ -68,24 +84,14 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 148.0
-offset_top = 328.0
+offset_top = 330.0
 offset_right = -148.0
-offset_bottom = 440.0
+offset_bottom = 442.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_cjknc")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="TextureRect2" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -248.5
-offset_top = -110.0
-offset_right = 248.5
-offset_bottom = 387.0
-grow_horizontal = 2
-texture = ExtResource("4_cjknc")
-expand_mode = 1
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
